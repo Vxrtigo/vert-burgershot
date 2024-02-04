@@ -173,6 +173,12 @@ setContainerProperties('burgerbag', {
 		weight = 100,
 		stack = true,
 		description = "Best nuggets in town!",
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'burger',
+			usetime = 2500,
+		},
 	},
 
 	["burger_fries"] = {
@@ -180,6 +186,12 @@ setContainerProperties('burgerbag', {
 		weight = 100,
 		stack = true,
 		description = "Best fries in town!",
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'burger',
+			usetime = 2500,
+		},
 	},
 
 	["burger_shotrings"] = {
@@ -187,6 +199,12 @@ setContainerProperties('burgerbag', {
 		weight = 100,
 		stack = true,
 		description = "Best onion rings in town!",
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'burger',
+			usetime = 2500,
+		},
 	},
 
 	["bacon_cheeseburger"] = {
@@ -194,6 +212,12 @@ setContainerProperties('burgerbag', {
 		weight = 100,
 		stack = true,
 		description = "Burgershots finest!",
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'burger',
+			usetime = 2500,
+		},
 	},
 
 	["burger_bleeder"] = {
@@ -201,6 +225,12 @@ setContainerProperties('burgerbag', {
 		weight = 100,
 		stack = true,
 		description = "Bleeder burger!",
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'burger',
+			usetime = 2500,
+		},
 	},
 
 	["burger_heartstopper"] = {
@@ -208,6 +238,12 @@ setContainerProperties('burgerbag', {
 		weight = 100,
 		stack = true,
 		description = "Heartstopper burger!",
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'burger',
+			usetime = 2500,
+		},
 	},
 
 	["burger_moneyshot"] = {
@@ -215,6 +251,12 @@ setContainerProperties('burgerbag', {
 		weight = 100,
 		stack = true,
 		description = "Moneyshot burger!",
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'burger',
+			usetime = 2500,
+		},
 	},
 
 	["burger_torpedo"] = {
@@ -222,6 +264,12 @@ setContainerProperties('burgerbag', {
 		weight = 100,
 		stack = true,
 		description = "Torpedo burger!",
+		client = {
+			status = { hunger = 200000 },
+			anim = 'eating',
+			prop = 'burger',
+			usetime = 2500,
+		},
 	},
 
 	["burgerbun"] = {
@@ -240,12 +288,24 @@ setContainerProperties('burgerbag', {
 		label = "Soft Drink",
 		weight = 100,
 		stack = true,
+		client = {
+			status = { thirst = 200000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = `prop_ecola_can`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+			usetime = 2500,
+		}
 	},
 
 	["burger_coffee"] = {
 		label = "Coffee",
 		weight = 100,
 		stack = true,
+		client = {
+			status = { thirst = 200000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = `prop_ecola_can`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
+			usetime = 2500,
+		}
 	},
 
 	["cola"] = {
