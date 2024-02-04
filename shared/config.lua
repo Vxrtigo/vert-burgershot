@@ -228,17 +228,17 @@ Config.PreppingItems = { -- Items to prepare
     progressbar = 'Making Burger', -- Progress bar label
     choptime = 6, -- Time in seconds required to chop
     },
-    ['burger_moneyshot'] = { -- Name of the reward item. This functions different than the single items since it requires multiple ingredients
-    required = { -- required items to craft
-        ['burgerpatty'] = { amount = 2}, --put required item name in brackets followed by = the amount needed to craft
+    ['burger_moneyshot'] = {
+    required = { 
+        ['burgerpatty'] = { amount = 2}, 
         ['cookedbacon'] = { amount = 1},
         ['cheese'] = { amount = 2},
         ['burgerbun'] = { amount = 1},
     },
-    reward = 'burger_moneyshot', -- Given Item
-    amount = 1, -- Item amount to give
-    progressbar = 'Making Bacon Burger', -- Progress bar label
-    choptime = 6, -- Time in seconds required to chop
+    reward = 'burger_moneyshot', 
+    amount = 1, 
+    progressbar = 'Making Bacon Burger', 
+    choptime = 6, 
     },
     ['burger_bleeder'] = {
     required = {
