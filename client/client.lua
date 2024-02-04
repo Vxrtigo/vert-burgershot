@@ -462,7 +462,7 @@ RegisterNetEvent('vert-burgershot:client:BuildBurger', function(data) -- Making 
     end, data.Item, Input[1])
 end)
 
-RegisterNetEvent('vert-burgershot:client:PourDrink', function(data) -- Making Burgers
+RegisterNetEvent('vert-burgershot:client:PourDrink', function(data) -- Making Drinks
     local Input = lib.inputDialog('How many drinks would you like to pour?', {
         {type = 'number', label = 'How many drinks would you like to pour?',},
     })
