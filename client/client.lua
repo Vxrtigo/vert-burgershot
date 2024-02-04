@@ -154,7 +154,7 @@ for k, v in pairs(Config.DrinkStations) do
         options = {
             {
                 name = 'drinks',
-                icon = 'fas fa-cart-shopping',
+                icon = 'fas fa-mug-hot',
                 label = 'Make Drinks',
                 distance = 1.5,
                 groups = Config.Job,
