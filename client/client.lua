@@ -356,7 +356,7 @@ end)
 
 RegisterNetEvent('vert-burgershot:client:StartGrill', function(data) -- Cooking Food
     local Input = lib.inputDialog('How many items would you like to cook?', {
-        {type = 'number', label = 'How many items would you like to cook?',},
+        {type = 'number', label = 'How many items would you like to cook?', min = 1, max = 15},
     })
     local Time = (Config.GrillItems[data.Item].choptime * 1000) * Input[1]
     QBCore.Functions.TriggerCallback('vert-burgershot:server:StartCook', function(cb)
@@ -383,7 +383,7 @@ end)
 
 RegisterNetEvent('vert-burgershot:client:StartFryer', function(data) -- Frying Food
     local Input = lib.inputDialog('How many items would you like to fry?', {
-        {type = 'number', label = 'How many items would you like to fry?',},
+        {type = 'number', label = 'How many items would you like to fry?', min = 1, max = 15},
     })
     local Time = (Config.FryerItems[data.Item].choptime * 1000) * Input[1]
     QBCore.Functions.TriggerCallback('vert-burgershot:server:StartFrying', function(cb)
@@ -410,7 +410,7 @@ end)
 
 RegisterNetEvent('vert-burgershot:client:StartPrep', function(data) -- Prepping
     local Input = lib.inputDialog('How many items would you like to slice?', {
-        {type = 'number', label = 'How many items would you like to slice?',},
+        {type = 'number', label = 'How many items would you like to slice?', min = 1, max = 15},
     })
     local Time = (Config.ChoppingItems[data.Item].choptime * 1000) * Input[1]
     QBCore.Functions.TriggerCallback('vert-burgershot:server:StartPrep', function(cb)
@@ -437,7 +437,7 @@ end)
 
 RegisterNetEvent('vert-burgershot:client:BuildBurger', function(data) -- Making Burgers
     local Input = lib.inputDialog('How many items would you like to prepare?', {
-        {type = 'number', label = 'How many items would you like to prepare?',},
+        {type = 'number', label = 'How many items would you like to prepare?', min = 1, max = 15},
     })
     local Time = (Config.PreppingItems[data.Item].choptime * 1000) * Input[1]
     QBCore.Functions.TriggerCallback('vert-burgershot:server:BuildBurger', function(cb)
@@ -464,7 +464,7 @@ end)
 
 RegisterNetEvent('vert-burgershot:client:PourDrink', function(data) -- Making Drinks
     local Input = lib.inputDialog('How many drinks would you like to pour?', {
-        {type = 'number', label = 'How many drinks would you like to pour?',},
+        {type = 'number', label = 'How many drinks would you like to pour?', min = 1, max = 15},
     })
     local Time = (Config.DrinkItems[data.Item].choptime * 1000) * Input[1]
     QBCore.Functions.TriggerCallback('vert-burgershot:server:PourDrink', function(cb)

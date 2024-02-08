@@ -113,8 +113,3 @@ RegisterServerEvent('vert-burgershot:server:BeginPouring', function(Item, Amount
     end    
     Player.Functions.AddItem(Config.DrinkItems[Item].reward, Config.DrinkItems[Item].amount * Amount)
 end)
-
---[[ AddEventHandler('onResourceStart', function(resourceName)
-    if resourceName ~= GetCurrentResourceName() then return end
-        exports.ox_inventory:RegisterStash('foodwarmer', "Burgershot Food Warmer", 15, 120000, nil)
-end) ]]
