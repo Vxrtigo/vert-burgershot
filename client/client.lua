@@ -1,6 +1,30 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local blips = {}
 
+CreateThread(function()
+    for k, v in pairs(Config.VehiclePeds) do
+        lib.requestModel(Config.VehiclePeds[1].model)
+        vehiclePed = CreatePed(3, Config.VehiclePeds[1].model, v.coords.x, v.coords.y, v.coords.z - 1.0, v.coords.w, false, false)
+        FreezeEntityPosition(vehiclePed, true)
+        SetEntityInvincible(vehiclePed, true)
+        TaskStartScenarioInPlace(vehiclePed, 'WORLD_HUMAN_CLIPBOARD', 0, true)
+        exports.ox_target:addLocalEntity(vehiclePed, {
+            {
+                type = "client",
+                event = 'vert-burgershot:client:spawnVehicle',
+                icon = "fas fa-car",
+                label = "Spawn Vehicle",
+            },
+            {
+                type = "client",
+                event = 'vert-burgershot:client:returnVehicle',
+                icon = "fas fa-sign-in-alt",
+                label = "Return Vehicle",
+            }
+        })
+    end
+end)
+
 for k, v in pairs(Config.FoodWarmers) do
     exports.ox_target:addBoxZone({
         coords = v.coords,
@@ -165,6 +189,49 @@ for k, v in pairs(Config.DrinkStations) do
         }
     })
 end
+
+RegisterNetEvent('vert-burgershot:client:spawnVehicle', function()
+    for k, v in pairs(Config.Vehicles) do
+        local model = Config.Vehicles[1].vehicle
+        local player = PlayerPedId()
+        if IsAnyVehicleNearPoint(v.coords.x, v.coords.y, v.coords.z, 2.0) then
+            QBCore.Functions.Notify('There is a vehicle in the way!', 'error', 5000)
+            return
+        end
+
+        QBCore.Functions.SpawnVehicle(model, function(vehicle)
+            SetEntityHeading(vehicle, 340.0)
+            TaskWarpPedIntoVehicle(player, vehicle, -1)
+            TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle))
+            SetVehicleEngineOn(vehicle, true, true)
+            SetEntityHeading(vehicle, v.coords.w)
+            SetVehicleColours(vehicle, 150)
+            exports[Config.Vehicles[1].fuelexport]:SetFuel(vehicle, 100.0)
+            SpawnVehicle = true
+        end, v.coords, true)
+
+        Wait(1000)
+
+        local vehicle = GetVehiclePedIsIn(player, false)
+        local vehicleLabel = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
+        vehicleLabel = GetLabelText(vehicleLabel)
+        local plate = GetVehicleNumberPlateText(vehicle)
+    end
+end)
+
+RegisterNetEvent('vert-burgershot:client:returnVehicle', function()
+    if SpawnVehicle then
+        local Player = QBCore.Functions.GetPlayerData()
+        QBCore.Functions.Notify('Vehicle Returned!', 'success')
+        local car = GetVehiclePedIsIn(PlayerPedId(), true)
+        NetworkFadeOutEntity(car, true, false)
+        Citizen.Wait(2000)
+        QBCore.Functions.DeleteVehicle(car)
+    else
+        QBCore.Functions.Notify('There is no vehicle to return!', 'error', 5000)
+    end
+    SpawnVehicle = false
+end)
 
 RegisterNetEvent('vert-burgershot:client:OpenCookMenu', function()
     lib.registerContext({
