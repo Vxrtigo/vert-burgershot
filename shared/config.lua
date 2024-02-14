@@ -4,12 +4,14 @@ Config.Debug = false
 
 Config.Job = "burgershot" -- Required Job
 
-Config.VehiclePeds = {
-    [1] = {coords = vector4(-1172.49, -898.63, 13.79, 337.84), model = 'csb_burgerdrug'} -- Vehicle Delivery Ped Location and Ped Model
-}
-
 Config.Vehicles = {
-    [1] = {coords = vector4(-1165.68, -887.93, 13.94, 122.81), vehicle = 'burrito3', fuelexport = 'cdn-fuel'}  -- Vehicle Spawn Locations, Vehicle, and make sure to adjust fuelexport to whatever fuel script you're using.
+    [1] = {
+        pedcoords = vector4(-1172.49, -898.63, 13.79, 337.84), 
+        model = 'csb_burgerdrug',
+        vehiclecoords = vector4(-1165.68, -887.93, 13.94, 122.81),
+        vehicle = 'burrito3',
+        fuelexport = 'cdn-fuel',
+    }
 }
 
 Config.Blips = { -- Supports multiple locations

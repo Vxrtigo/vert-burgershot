@@ -2,9 +2,9 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local blips = {}
 
 CreateThread(function()
-    for k, v in pairs(Config.VehiclePeds) do
-        lib.requestModel(Config.VehiclePeds[1].model)
-        vehiclePed = CreatePed(3, Config.VehiclePeds[1].model, v.coords.x, v.coords.y, v.coords.z - 1.0, v.coords.w, false, false)
+    for k, v in pairs(Config.Vehicles) do
+        lib.requestModel(Config.Vehicles[k].model)
+        vehiclePed = CreatePed(3, Config.Vehicles[k].model, v.pedcoords.x, v.pedcoords.y, v.pedcoords.z - 1.0, v.pedcoords.w, false, false)
         FreezeEntityPosition(vehiclePed, true)
         SetEntityInvincible(vehiclePed, true)
         TaskStartScenarioInPlace(vehiclePed, 'WORLD_HUMAN_CLIPBOARD', 0, true)
@@ -192,9 +192,9 @@ end
 
 RegisterNetEvent('vert-burgershot:client:spawnVehicle', function()
     for k, v in pairs(Config.Vehicles) do
-        local model = Config.Vehicles[1].vehicle
+        local model = Config.Vehicles[k].vehicle
         local player = PlayerPedId()
-        if IsAnyVehicleNearPoint(v.coords.x, v.coords.y, v.coords.z, 2.0) then
+        if IsAnyVehicleNearPoint(v.vehiclecoords.x, v.vehiclecoords.y, v.vehiclecoords.z, 2.0) then
             QBCore.Functions.Notify('There is a vehicle in the way!', 'error', 5000)
             return
         end
@@ -204,11 +204,11 @@ RegisterNetEvent('vert-burgershot:client:spawnVehicle', function()
             TaskWarpPedIntoVehicle(player, vehicle, -1)
             TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle))
             SetVehicleEngineOn(vehicle, true, true)
-            SetEntityHeading(vehicle, v.coords.w)
+            SetEntityHeading(vehicle, v.vehiclecoords.w)
             SetVehicleColours(vehicle, 150)
-            exports[Config.Vehicles[1].fuelexport]:SetFuel(vehicle, 100.0)
+            exports[Config.Vehicles[k].fuelexport]:SetFuel(vehicle, 100.0)
             SpawnVehicle = true
-        end, v.coords, true)
+        end, v.vehiclecoords, true)
 
         Wait(1000)
 
@@ -216,6 +216,7 @@ RegisterNetEvent('vert-burgershot:client:spawnVehicle', function()
         local vehicleLabel = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
         vehicleLabel = GetLabelText(vehicleLabel)
         local plate = GetVehicleNumberPlateText(vehicle)
+        break
     end
 end)
 
